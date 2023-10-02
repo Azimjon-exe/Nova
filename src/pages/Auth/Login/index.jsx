@@ -5,13 +5,15 @@ import { useState } from "react";
 import authService from "../../../services/authServices";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [pasword, setPasword] = useState("");
+  const [username, setUsername] = useState("Azim");
+  const [pasword, setPasword] = useState("Azim1122");
 
   const onSubmit = () => {
     authService.userLogin({ username, pasword }).then((res) => {
       console.log(res);
     });
+    window.location.href = "/events";
+    localStorage.setItem("token", "token");
   };
   return (
     <div className="flex justify-center items-center h-screen bg-blue-500 ">
