@@ -1,10 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./main.css";
 import { Button, Dialog, Flex } from "@radix-ui/themes";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const logOut = () => {
-    window.location.href = "/login";
+    navigate("/login");
     localStorage.removeItem("token");
   };
   return (

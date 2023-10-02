@@ -1,6 +1,6 @@
 import { Button, Card, Flex, TextField } from "@radix-ui/themes";
 import logo from "../../../assets/logo.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import authService from "../../../services/authServices";
 
@@ -8,11 +8,12 @@ const Login = () => {
   const [username, setUsername] = useState("Azim");
   const [pasword, setPasword] = useState("Azim1122");
 
+  const navigate = useNavigate();
   const onSubmit = () => {
     authService.userLogin({ username, pasword }).then((res) => {
       console.log(res);
     });
-    window.location.href = "/events";
+    navigate("/events");
     localStorage.setItem("token", "token");
   };
   return (
